@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A-frame test</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('right-cursor-listener', {
+          init: function() {
+            this.el.addEventListener('click', function() {
+              alert("right button clicked");
+            });
+          }
+        });
+        
+        AFRAME.registerComponent('left-cursor-listener', {
+          init: function() {
+            this.el.addEventListener('click', function() {
+              alert("left button clicked (or touch event / no information)");
+            });
+          }
+        });
+        </script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity cursor="rayOrigin: mouse;" raycaster="objects: .clickable; far: 10; showLine: true"></a-entity>  
+      <a-box id="grandbox" position="0 2.3 -3" rotation="0 0 0" color="#00a335" scale="2 2 1"></a-box>
+      <a-box id="rightbox" position="0.6 1 -3" rotation="0 0 0" color="#50788a" scale="0.8  0.2 1" right-cursor-listener class="clickable"></a-box>
+      <a-box id="leftbox" position="-0.6 1 -3" rotation="0 0 0" color="#50788a" scale="0.8  0.2 1" left-cursor-listener class="clickable"></a-box>
+      <a-text value="manutencao" color="black" scale="1.8 1.8 1.8" position="0.6 1 -2.5" align="center" width="1.5"></a-text>
+      <a-text value="status" color="black" scale="1.8 1.8 1.8" position="-0.6 1 -2.5" align="center" width="1.5"></a-text>    
+    </a-scene>
+    </body>
+</html>
+
+
+<!-- npm install -g aframe http-server
+aframe init myproject
+cd myproject
+http-server 
+
+<a-text value="manutenção" font="custom-msdf.json" font-image="custom-msdf.png" negate="false" scale="1.8 1.8 1.8" position="0.6 1 -2.5"></a-text>
+      <a-entity text="value: manutenção; color="black" scale="1.8 1.8 1.8" position="0.6 1 -2.5" align="center" width="1.5"></a-entity>
+
+-->
