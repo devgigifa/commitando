@@ -17,3 +17,10 @@ npm i uuid bcryptjs jest supertest
 npm i
 
 // autosave no vs code
+
+# Subir pro GitHub manualmente
+
+- git init
+- git add .
+- git commit -m "update"
+- git push https://pastadogithub
